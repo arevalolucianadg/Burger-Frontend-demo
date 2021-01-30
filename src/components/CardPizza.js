@@ -1,25 +1,31 @@
 import React from 'react';
 
-const CardPizza = () => {
+const CardPizza = ({ pizza }) => {
+
+    const { name, description, image, priceSmallSize, priceLargeSize } = pizza;
+
     return (
         <div className="card mb-3 mx-1 p-0">
             <div className="row g-0">
                 <div className="col-md-5">
-                    <img className="card-img" src="https://www.laespanolaaceites.com/wp-content/uploads/2019/06/pizza-con-tomate-albahaca-y-mozzarella.jpg" alt="Pizza" />
+                    <img className="card-img" src={image} alt={name} />
                 </div>
                 <div className="col-md-7">
                     <div className="card-body">
-                        <h5 className="card-title fw-bold mt-2">Pizza muzzarella</h5>
-                        <p className="card-text">Salsa de tomate, muzzarella y orégano.</p>
+                        <h5 className="card-title fw-bold mt-2">Pizza {name}</h5>
+                        <p className="card-text">{description}</p>
                         <div className="row mt-5">
                             <p className="card-text col-6 fw-bold">
                                 <small className="mr-3 text-muted text-uppercase">Chica</small>
-                                $ 370
+                                $ {priceSmallSize}
                             </p>
-                            <p className="card-text col-6 fw-bold">
-                            <small className="mr-3 text-muted text-uppercase">Grande</small>
-                            $ 470
-                        </p>
+                            { 
+                                priceLargeSize && (<p className="card-text col-6 fw-bold">
+                                    <small className="mr-3 text-muted text-uppercase">Grande</small>
+                                    $ {priceLargeSize}
+                                </p>)
+
+                            }
                         </div>
                     </div>
                 </div>
